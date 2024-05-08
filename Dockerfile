@@ -6,4 +6,4 @@ CMD ["python", "-u","./nexusguard.py"]
 
 
 #docker image rm -f nexusguard; docker build --tag nexusguard .
-#docker run -d --restart unless-stopped nexusguard
+#docker run -d --restart unless-stopped --name nexusguard nexusguard
