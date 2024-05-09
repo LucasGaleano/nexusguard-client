@@ -52,6 +52,9 @@ class nexusguardClient():
 
     def get_sites(self):
         return self.make_request(f'/specp/op/sites')
+    
+    def is_finished(self, status):
+        return not int(status)
         
 
 

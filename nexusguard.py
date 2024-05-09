@@ -17,14 +17,16 @@ except Exception as e:
 
 
 siteID = config['nexus']['siteID']
-lastAlert = ''
+ongoingAlerts = dict()
 
 while True:
 
     alerts = n.get_alerts(siteID)['result']
     for alert in alerts['events']:
-        if lastAlert == alert['alert_id']:
-            break
+        # if lastAlert == alert['alert_id']:
+        #     break
+        if n.is_finished(alert['status']):
+            continue 
         alert['app'] = 'nexusguard'
         print(json.dumps(alert))
 
