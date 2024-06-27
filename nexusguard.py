@@ -28,6 +28,11 @@ while True:
         if n.is_finished(alert['status']):
             continue 
         alert['app'] = 'nexusguard'
+        # I closed the value between an array so Wazuh can read it as number.
+        alert['flow'] = [{"max_pps":alert['max_pps']}]
+        alert['flow'] = [{"max_bps":alert['max_bps']}]
+        del alert['max_pps']
+        del alert['max_bps']
         print(json.dumps(alert))
 
     lastAlert = alerts['events'][0]['alert_id']
